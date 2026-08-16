@@ -35,18 +35,16 @@ description-zh: '中文介绍'
 
 > ⚠️ 注意：frontmatter 值若含 `冒号+空格`（如 `workflow: xxx`）必须用引号包裹，否则 YAML 解析失败、skill 会被 DSH 忽略。
 
-## 🗂️ 扫描根（当前机器固定路径）
+## 🗂️ 扫描范围
 
-```
-C:\Users\User\.dsh\skills
-C:\Users\User\.agents\skills
-D:\aiagent\.dsh\skills
-D:\aiagent\.agents\skills
-D:\aiagent\deepseek-harness-master\deepseek-harness-master\.agents\skills
-D:\aiagent\deepseek-harness-master\deepseek-harness-master\.dsh\skills
-```
+插件自动扫描以下 skill 来源并合并去重：
 
-新机器部署时按需修改 `lib/host.js` 里的 `roots` 数组。
+- **registry 双视图**：DSH skills 服务（当前作用域 + 工作区视图）
+- **用户级**：`~/.dsh/skills`（即 `$DSH_HOME/skills`）、`~/.agents/skills`
+- **项目级**：工作区与仓库根下的 `.dsh/skills`、`.agents/skills`
+
+> 具体扫描路径定义在 `lib/host.js` 的 `roots` 数组（含 `$HOME` 与工作区基准的相对拼接）。
+> 部署到新机器时，按该机器的 `$DSH_HOME` 与仓库位置调整 `roots` 即可，无需改其他代码。
 
 ## 📄 License
 
