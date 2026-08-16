@@ -39,12 +39,21 @@ description-zh: '中文介绍'
 
 插件自动扫描以下 skill 来源并合并去重：
 
-- **registry 双视图**：DSH skills 服务（当前作用域 + 工作区视图）
-- **用户级**：`~/.dsh/skills`（即 `$DSH_HOME/skills`）、`~/.agents/skills`
-- **项目级**：工作区与仓库根下的 `.dsh/skills`、`.agents/skills`
+- **registry 视图**：DSH skills 服务（全局层，双 key 避免过期缓存）
+- **用户级**：`~/.dsh/skills`、`~/.agents/skills`（需配置，见下）
+- **项目/仓库级**：从工作区根**递归发现**所有 `.dsh/skills`、`.agents/skills` 目录（深度 6，跳过 `node_modules`、`.git`）
 
-> 具体扫描路径定义在 `lib/host.js` 的 `roots` 数组（含 `$HOME` 与工作区基准的相对拼接）。
-> 部署到新机器时，按该机器的 `$DSH_HOME` 与仓库位置调整 `roots` 即可，无需改其他代码。
+## ⚙️ 用户级扫描配置
+
+受限运行时无法自动探测 home（无 `process`、`~` 不展开），因此用户级 skill 根
+通过 `lib/host.js` 顶部的单个常量启用：
+
+```js
+const USER_HOME = ''            // 留空 = 跳过用户级扫描
+const USER_HOME = 'C:\\Users\\你的用户名'   // 设为你的 home 即启用
+```
+
+> 项目/仓库级扫描（递归发现）与 registry 视图**无需配置**，装上即自动生效。
 
 ## 📄 License
 
