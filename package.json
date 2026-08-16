@@ -1,0 +1,29 @@
+{
+  "name": "dsh-skill-picker",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness 全局 Skill 选择器（动态 Cordis 插件）：设置 > 通用 下拉框选默认或指定 skill，选择注入 system prompt 让 Agent 按所选 skill 工作；自动扫描 skill 并读取 description-zh 中文介绍。",
+  "type": "module",
+  "main": "lib/host.js",
+  "exports": {
+    "./host": "./lib/host.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT",
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "skill",
+    "picker",
+    "cordis",
+    "plugin"
+  ]
+}
