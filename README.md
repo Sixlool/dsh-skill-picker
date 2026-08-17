@@ -2,9 +2,6 @@
 
 在 DeepSeek Harness **设置 → 通用** 里加一个「开发 Skill」下拉框，让你在**任何会话**都能选择本次任务使用哪个 Skill（或保持默认自动判断），选择结果注入 system prompt，Agent 会先加载所选 Skill 再开工。
 
-> 👤 作者：[@Sixlool](https://github.com/Sixlool)
-> 📦 相关项目：[dsh-desktop-pet（桌宠）](https://github.com/Sixlool/dsh-desktop-pet) · [dsh-interactive-dev-skill（AI 开发方法论 Skill）](https://github.com/Sixlool/dsh-interactive-dev-skill)
-
 ## ✨ 功能
 
 | 功能 | 说明 |
